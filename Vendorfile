@@ -1,0 +1,41 @@
+# Vendorfile for use with vendorer command. https://github.com/grosser/vendorer
+# Run `vendorer` to install jQuery and jQuery UI dependencies into scripts/lib.
+
+JQUERY_VER = "1.9.1"
+JQUERY_UI_VER = "1.10.2"
+
+folder "vendor/assets/javascripts" do
+
+  # 55 Minutes JavaScript utils (master)
+  #
+  from "git://github.com/55minutes/fiftyfive-util-js.git" do
+    file "fiftyfive-utils/feature-detect.js",                     "feature-detect.js"
+    file "fiftyfive-utils/jquery.ui.forminputplaceholdertext.js", "jquery.ui.forminputplaceholdertext.js"
+  end
+
+  # Standard jQuery/UI dist
+  #
+  file "jquery.js",         "ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VER}/jquery.js"
+  file "jquery-ui.js",      "http://ajax.googleapis.com/ajax/libs/jqueryui/#{JQUERY_UI_VER}/jquery-ui.js"
+
+  # jQuery UI components
+  #
+  file "jquery-ui.widget.js", "https://raw.github.com/jquery/jquery-ui/#{JQUERY_UI_VER}/ui/jquery.ui.widget.js" do |path|
+    rewrite(path) { |content| content.gsub(/@VERSION/, JQUERY_UI_VER) }
+  end
+end
+
+# Sass icon fonts
+#
+# Leaving other font URLs in until we decide on the final iconset.
+from "git://github.com/rstacruz/sass_icon_fonts.git" do
+  file "vendor/assets/stylesheets/sass-icon-fonts/_font-awesome.sass",  "_font-awesome.sass"
+end
+
+folder "vendor/assets/fonts" do
+  # Font Awesome
+  #
+  from "git://github.com/FortAwesome/Font-Awesome.git" do
+    folder "font-awesome", "font"
+  end
+end

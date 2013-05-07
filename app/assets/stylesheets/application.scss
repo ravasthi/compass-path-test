@@ -1,0 +1,44 @@
+/*------------------------------------------------------------------------------
+| application.css
+| application name v1.0
+|
+| This file rolls up the main styles for the entire application. You'll need to
+| include the IE-specific and print stylesheets, as well as the display-size-
+| specific styles separately in your markup. See the readme for an explanation
+| of the directory organization.
+------------------------------------------------------------------------------*/
+
+// Reset - use Compass' reset mixins
+@import "compass/reset";
+@include global-reset;
+@include reset-html5;
+
+// Third-party mixins
+@import "compass/css3";
+@import "cssgrid-1140";
+
+// ----- Icon fonts
+$fa-path: '/fonts/font-awesome/fontawesome-webfont';
+@import "font-awesome";
+
+// Basics
+@import "colors";
+@import "typography";
+@import "grid";
+
+// Shared
+@import "sassybuttons";
+@import "mixins";
+@import "foundation";
+@import "page";
+@import "forms";
+@import "alerts";
+@import "pagination";
+@import "header";
+@import "footer";
+
+// Feature-/page-specific
+@import "documentation";
+@import "login";
+@import "style-guide";
+@import "feature-1";

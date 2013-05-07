@@ -1,0 +1,10 @@
+<script type="text/javascript">
+  (function($) {
+    <%= yield :before_ready %>
+
+    $(function() {
+      <%= yield :onready %>
+    });
+  })(jQuery);
+</script>
+
